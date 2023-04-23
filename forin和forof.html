@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    // HTML 代码为
+     <p id="para">Hello <em>World</em></p>
+    <script>
+        const arr = [1, 2, 3, 4]
+        arr.foo = 'foolish'
+
+        for (let i in arr) {
+            console.log(i, arr[i]);
+        }
+
+        for (let i of arr) {
+            console.log(i, arr[i]);
+        }
+
+        arr.forEach((item) => {
+            console.log(item);
+        })
+        function hide(e) {
+            // 不管点击 Hello 或 World，总是返回 true
+            console.log(this === e.currentTarget);
+            // 点击 Hello，返回 true
+            // 点击 World，返回 false
+            console.log(this === e.target);
+        }
+        document.getElementById('para').addEventListener('click', hide, false)
+    </script>
+</body>
+
+</html>

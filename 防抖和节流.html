@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin:100px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入关键词">
+    <div class="box" draggable="true"></div>
+    <script>
+        var btn = document.querySelector('input')
+        var btn1 = document.querySelector('.box')
+        btn.addEventListener('keyup',
+            debounce(() => {
+                console.log('你好！' + btn.value);
+            }
+            ))
+
+            btn1.addEventListener('drag',throttle(((e)=>{
+                console.log(e.clientX);
+            }),100))
+
+        //防抖函数
+        function debounce(fn, delay = 1000) {
+            let timer = null
+
+            return function () {
+                if (timer) {
+                    clearTimeout(timer)
+                    //防抖相当于回城，打断了就要重来;
+                }
+                timer = setTimeout(() => {
+                    fn.apply(this, arguments)
+                    timer = null
+                }, delay)
+            }
+        }
+
+        //节流函数
+        function throttle(fn,delay=100){
+            let timer = null
+            return function(){
+                if(timer){
+                    return 
+                }
+                timer = setTimeout(()=>{
+                    fn.apply(this,arguments)
+                    timer = null
+                },delay)
+            }
+        }
+    </script>
+</body>
+
+</html
